@@ -28,12 +28,13 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                    <tr class="border-t">
+                                    <tr class="border-t">                                        
                                         <td class="p-2">{{ $order->client }}</td>
                                         <td class="p-2">{{ $order->date }}</td>
                                         <td class="p-2">{{ ucfirst($order->status) }}</td>
                                         <td class="p-2">
                                             <a href="{{ route('orders.edit', $order) }}" class="text-blue-500 hover:underline">Edit</a>
+                                            <a href="{{ route('orders.show', $order) }}" class="text-blue-500 hover:underline">Ver</a>
                                         </td>
                                     </tr>
                                     @endforeach

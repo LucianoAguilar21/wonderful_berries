@@ -21,7 +21,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
@@ -53,7 +53,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $order->load('pallets');
+
+        return view('orders.show', compact('order'));
     }
 
     /**

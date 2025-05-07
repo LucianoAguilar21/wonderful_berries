@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
     // Route::resource('orders', OrderController::class);
     // Route::resource('orders.pallets', PalletController::class);
     // Route::resource('quality-inspections', QualityInspectionController::class);
+    
     // Mostrar todos los pedidos
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
@@ -37,8 +38,10 @@ Route::middleware('auth')->group(function () {
     // Actualizar el pedido
     Route::put('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
 
-    // Eliminar pedido (si decidís hacerlo luego)
+    // Eliminar pedido 
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 
 require __DIR__ . '/auth.php';
