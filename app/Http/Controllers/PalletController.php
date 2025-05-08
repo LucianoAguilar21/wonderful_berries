@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Pallet;
 use Illuminate\Http\Request;
 
@@ -18,17 +19,28 @@ class PalletController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Order $order)
+       
     {
-        //
+        return view('pallets.create', compact('order'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Order $order)
     {
-        //
+        $validated = $request->validate([
+            'number' => 'required|integer|unique:pallets,number',
+            'field_number' => 'required|integer',
+            'box_count' => 'required|integer',
+            'lot_number' => 'required|string',
+            'pot_size' => 'required|string',
+        ]);
+    
+        $order->pallets()->create($validated);
+    
+        return redirect()->route('orders.show', $order)->with('success', 'Pallet added successfully.');
     }
 
     /**

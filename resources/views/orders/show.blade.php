@@ -23,6 +23,11 @@
                 
                         <hr class="my-6">
                 
+                        <a href="{{ route('pallets.create', $order) }}"
+                            class="inline-block mb-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                                + Add Pallet
+                        </a>
+
                         <h2 class="text-xl font-semibold mb-2">Pallets</h2>
                 
                         @if($order->pallets->isEmpty())
