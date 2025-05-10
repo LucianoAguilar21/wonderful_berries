@@ -31,16 +31,20 @@ class PalletController extends Controller
     public function store(Request $request, Order $order)
     {
         $validated = $request->validate([
-            'number' => 'required|integer|unique:pallets,number',
+            'pallet_number' => 'required|integer|unique:pallets,pallet_number',
             'field_number' => 'required|integer',
             'box_count' => 'required|integer',
-            'lot_number' => 'required|string',
+            'lot' => 'required|string',
             'pot_size' => 'required|string',
         ]);
     
-        $order->pallets()->create($validated);
-    
-        return redirect()->route('orders.show', $order)->with('success', 'Pallet added successfully.');
+        $pallet = $order->pallets()->create($validated);
+        
+        if ($pallet) {
+            return redirect()->route('orders.show', $order)->with('success', 'Pallet added successfully.');
+        } else {
+            return redirect()->route('orders.show', $order)->with('error', 'Failed to add pallet. Please try again.');
+        }
     }
 
     /**

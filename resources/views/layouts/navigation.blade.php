@@ -1,4 +1,20 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    @if (session('success'))
+        <div x-data="{ show: true }" x-show="show" class="bg-green-500 text-white p-4">
+            <div class="container mx-auto">
+                <p>{{ session('success') }}</p>
+                <button @click="show = false" class="absolute top-0 right-0 p-2">
+                    &times;
+                </button>
+            </div>
+        </div>
+        
+    @endif
+    @if(session('error'))
+        <div class="mb-4 p-4 bg-red-100 text-red-800 rounded">
+            {{ session('error') }}
+        </div>
+    @endif
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div class="flex justify-between h-16 ">

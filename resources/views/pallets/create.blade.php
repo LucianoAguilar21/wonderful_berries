@@ -21,7 +21,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Pallet Number</label>
-                                <input type="number" name="number" required class="w-full mt-1 border rounded-md p-2" />
+                                <input type="number" name="pallet_number" required class="w-full mt-1 border rounded-md p-2" />
                             </div>
 
                             <div>
@@ -36,7 +36,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Lot Number</label>
-                                <input type="text" name="lot_number" required class="w-full mt-1 border rounded-md p-2" />
+                                <input type="text" name="lot" required class="w-full mt-1 border rounded-md p-2" />
                             </div>
 
                             <div>
@@ -55,4 +55,13 @@
             </div>
         </div>
     </div>
+    @if($errors->any())
+    <div class="mb-4 p-4 bg-red-100 text-red-800 rounded">
+        <ul class="list-disc pl-5">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </x-app-layout>

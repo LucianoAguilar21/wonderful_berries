@@ -50,7 +50,7 @@
                                                 <td class="p-2 border">{{ $pallet->number }}</td>
                                                 <td class="p-2 border">{{ $pallet->field_number }}</td>
                                                 <td class="p-2 border">{{ $pallet->box_count }}</td>
-                                                <td class="p-2 border">{{ $pallet->lot_number }}</td>
+                                                <td class="p-2 border">{{ $pallet->lot }}</td>
                                                 <td class="p-2 border">{{ $pallet->pot_size }}</td>
                                             </tr>
                                         @endforeach
